@@ -105,9 +105,6 @@
     .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .disclaimer { margin-top: 18px; font-size: .8rem; color: #64748b; }
 
-    /* Chat launcher placeholder (replaced by the n8n chat widget in Task 5) */
-    #chat-placeholder { position: fixed; right: 20px; bottom: 20px; z-index: 20; }
-    #chat-placeholder button { display: flex; align-items: center; gap: 10px; background: var(--teal); color: #fff; border: 0; border-radius: 999px; padding: 14px 20px; font: 600 .95rem Inter, sans-serif; box-shadow: 0 10px 30px -8px rgba(15,118,110,.6); cursor: pointer; }
 
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
@@ -121,7 +118,6 @@
       .hero { padding: 48px 0; }
       section { padding: 56px 0; }
       .nav .btn { padding: 10px 14px; font-size: .85rem; }
-      #chat-placeholder button span { display: none; }
     }
   </style>
 </head>
@@ -288,22 +284,30 @@
   </div>
 </footer>
 
-<!-- Task 5 replaces this placeholder with the n8n chat widget -->
-<div id="chat-placeholder">
-  <button type="button" aria-label="Chat with Northwind Smile">💬 <span>Chat & book</span></button>
-</div>
+<!-- AI receptionist (ElevenLabs test agent: chat + voice, en/hi/te). Booking is not saved until n8n tools are connected. -->
+<elevenlabs-convai agent-id="agent_4801m53xf00nfs5r1336h1yhyemj"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <script>
   // Set the real AI receptionist number here in Task 7 (E.164, e.g. "+914012345678").
-  const PHONE_E164 = "+910000000000";
-  const PHONE_DISPLAY = "+91 00000 00000";
-  document.querySelectorAll("[data-phone-link]").forEach(a => a.href = "tel:" + PHONE_E164);
-  document.querySelectorAll("[data-phone-text]").forEach(el => el.textContent = PHONE_DISPLAY);
+  // Until then there is no phone line, so "call" buttons open the voice widget instead.
+  const PHONE_E164 = "";
+  const PHONE_DISPLAY = "Talk in your browser";
 
-  // Until the chat widget exists (Task 5), the chat buttons scroll to the booking card.
-  const openChat = e => { e.preventDefault(); document.getElementById("book").scrollIntoView(); };
-  document.getElementById("cta-chat").addEventListener("click", openChat);
-  document.querySelector("#chat-placeholder button").addEventListener("click", openChat);
+  const openWidget = e => {
+    e.preventDefault();
+    const w = document.querySelector("elevenlabs-convai");
+    const btn = w && w.shadowRoot && w.shadowRoot.querySelector("button");
+    if (btn) btn.click();
+    else w && w.scrollIntoView();
+  };
+
+  document.querySelectorAll("[data-phone-text]").forEach(el => el.textContent = PHONE_DISPLAY);
+  document.querySelectorAll("[data-phone-link]").forEach(a => {
+    if (PHONE_E164) a.href = "tel:" + PHONE_E164;
+    else a.addEventListener("click", openWidget);
+  });
+  document.getElementById("cta-chat").addEventListener("click", openWidget);
 </script>
 </body>
 </html>
