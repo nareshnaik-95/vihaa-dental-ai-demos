@@ -93,4 +93,5 @@ crm/         header rows for the Google Sheet tabs
 site/        demo website with the AI receptionist widget
 test/        node:test suites
 docs/        design spec and build plan
+voice/       live system prompt of the AI receptionist + changelog
 ```
