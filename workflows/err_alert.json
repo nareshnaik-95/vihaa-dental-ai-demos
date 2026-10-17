@@ -12,7 +12,7 @@
     {
       "parameters": {
         "sendTo": "YOUR_ALERT_EMAIL@example.com",
-        "subject": "=[Northwind] Workflow failed: {{ $json.workflow.name }}",
+        "subject": "=[Vihaa] Workflow failed: {{ $json.workflow.name }}",
         "emailType": "text",
         "message": "=Workflow: {{ $json.workflow.name }} ({{ $json.workflow.id }})\nFailed node: {{ $json.execution.lastNodeExecuted }}\nError: {{ $json.execution.error.message }}\nTime (IST): {{ $now.setZone('Asia/Kolkata').toFormat('yyyy-LL-dd HH:mm:ss') }}\nExecution: {{ $json.execution.url }}\n\nStack:\n{{ $json.execution.error.stack }}",
         "options": {

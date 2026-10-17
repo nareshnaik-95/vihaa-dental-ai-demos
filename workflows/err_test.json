@@ -4,7 +4,7 @@
     {
       "parameters": {
         "httpMethod": "GET",
-        "path": "northwind-err-test",
+        "path": "vihaa-err-test",
         "options": {}
       },
       "id": "b2e1d7f3-0001-4c2b-8d02-000000000001",
@@ -12,7 +12,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [0, 0],
-      "webhookId": "northwind-err-test"
+      "webhookId": "vihaa-err-test"
     },
     {
       "parameters": {

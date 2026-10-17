@@ -1,6 +1,6 @@
-# Northwind Smile Dental — Demo Systems
+# Vihaa Dental — Demo Systems
 
-Portfolio demos for @boringagent.ai. **Northwind Smile Dental is a fictional clinic.** Never put real patient data here.
+Portfolio demos for @boringagent.ai. **Vihaa Dental is a fictional clinic.** Never put real patient data here.
 
 - Spec: `../../docs/superpowers/specs/2026-10-17-portfolio-demos-design.md`
 - Plan: `../../docs/superpowers/plans/2026-10-17-portfolio-demos.md`
@@ -30,9 +30,9 @@ Portfolio demos for @boringagent.ai. **Northwind Smile Dental is a fictional cli
 
 | Resource | Name | ID / URL |
 |---|---|---|
-| Calendar | `Northwind Appointments` | |
-| Sheet | `Northwind CRM` (tabs: `Leads`, `Messages`, `Inbox`) | |
-| Doc | `Northwind Knowledge` (paste from `knowledge.md`) | |
+| Calendar | `Vihaa Appointments` | |
+| Sheet | `Vihaa CRM` (tabs: `Leads`, `Messages`, `Inbox`) | |
+| Doc | `Vihaa Knowledge` (paste from `knowledge.md`) | |
 
 ## Demo links
 
@@ -42,7 +42,7 @@ Portfolio demos for @boringagent.ai. **Northwind Smile Dental is a fictional cli
 ## Decisions
 
 - **Voice provider:** _(record the Task 7 language spike result here)_
-- **Early test agent (ElevenLabs, 2026-10-17):** "Northwind Smile - AI Receptionist (test)", agent ID `agent_4801m53xf00nfs5r1336h1yhyemj`. Chat + voice, en/hi/te with auto language detection, Claude Haiku 5.5, clinic knowledge attached. Answers FAQs and collects booking details, but **nothing is saved yet** (no n8n tools). Test page: https://elevenlabs.io/app/talk-to?agent_id=agent_4801m53xf00nfs5r1336h1yhyemj. Text test in Telugu passed (correct price, hours, asked for name).
+- **Early test agent (ElevenLabs, 2026-10-17):** "Vihaa Dental - AI Receptionist (test)", agent ID `agent_4801m53xf00nfs5r1336h1yhyemj`. Chat + voice, en/hi/te with auto language detection, Claude Haiku 5.5, clinic knowledge attached. Answers FAQs and collects booking details, but **nothing is saved yet** (no n8n tools). Test page: https://elevenlabs.io/app/talk-to?agent_id=agent_4801m53xf00nfs5r1336h1yhyemj. Text tests passed: Telugu (price, hours) and romanised Hindi (address, hours). Renamed to Vihaa Dental on 2026-10-17; knowledge doc ID `gWQWwpOfHxy3GYVCqJth`.
 - **SMS in India:** sending Twilio SMS to Indian numbers requires DLT registration. For the demo, send SMS to your own verified number, or use WhatsApp (Twilio sandbox / WhatsApp Cloud API) for the follow-ups instead.
 
 ## Folder layout

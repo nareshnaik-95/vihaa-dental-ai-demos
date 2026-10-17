@@ -1,10 +1,10 @@
-# Northwind Smile Dental — Clinic Knowledge
+# Vihaa Dental — Clinic Knowledge
 
 > Fictional clinic used for AI demos. The chatbot and voice agent answer ONLY from this document.
-> Paste this into the Google Doc `Northwind Knowledge`. Keep it in English; the agents reply in English, Hindi or Telugu.
+> Paste this into the Google Doc `Vihaa Knowledge`. Keep it in English; the agents reply in English, Hindi or Telugu.
 
 ## About
-Northwind Smile Dental is a modern family dental clinic in Madhapur, Hyderabad. Friendly team of 3 dentists. Open since 2018.
+Vihaa Dental is a modern family dental clinic in Madhapur, Hyderabad. Friendly team of 3 dentists. Open since 2018.
 
 - **Address:** 2nd Floor, Plot 14, Madhapur Main Road, Hyderabad 500081 (fictional)
 - **Phone (AI receptionist):** see website
