@@ -19,7 +19,7 @@ Portfolio demos for @boringagent.ai. **Vihaa Dental is a fictional clinic.** Nev
 1. **Google Sheet:** create `Vihaa CRM` with three tabs, `Leads`, `Messages` and `Inbox`, and paste the header row from each file in `crm/`.
 2. **Import** into n8n (Workflows → Import from file): `err_alert.json`, `upsert_lead.json`, `send_once.json`, `followups.json`.
 3. In every **Google Sheets** node, select your Google credential and the `Vihaa CRM` sheet (replaces `YOUR_SHEET_ID`).
-4. In `send_once`: select your Twilio credential and set **From** (replaces `YOUR_TWILIO_NUMBER`), select your Gmail credential, and in the *Check and render* node set `BOOKING_LINK` to your live site URL.
+4. In `send_once`: select your Twilio credential and set **From** (replaces `YOUR_TWILIO_NUMBER`), select your Gmail credential, and in the *Check and render* node check `BOOKING_LINK` (defaults to the GitHub Pages site).
 5. In `followups`: in the *send_once* node, pick the `send_once` workflow from the list.
 6. Set the error workflow of all three to **ERR alert**, then activate `followups`.
 7. **Try it:** add a row to `Leads` with your own phone, `stage` = `Booked`, `language` = `te`, and `appointment_at` = tomorrow (e.g. `2026-10-18T10:30:00+05:30`). Within 5 minutes you get a Telugu confirmation SMS and the stage changes to `Confirmed`. Change the stage to `Attended` after the time has passed to get the review request.
@@ -74,7 +74,7 @@ npm run build   # regenerate workflows/*.json after changing src/ or templates/
 
 ## Demo links
 
-- Site: _(Task 2)_
+- Site (GitHub Pages): https://nareshnaik-95.github.io/vihaa-dental-ai-demos/site/
 - AI receptionist phone number: _(Task 7)_
 
 ## Decisions

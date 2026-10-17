@@ -71,7 +71,7 @@ function sendOnce() {
     trigger(),
     sheetsRead("Read Messages", "Messages", 220),
     code("Check and render", `// Set this to your public demo site once it is deployed.
-const BOOKING_LINK = "https://YOUR-SITE.netlify.app";
+const BOOKING_LINK = "https://nareshnaik-95.github.io/vihaa-dental-ai-demos/site/";
 const templates = ${templates};
 ${lib("followups.js")}
 
