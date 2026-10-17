@@ -1,12 +1,12 @@
 # Priya — Vihaa Dental AI receptionist (system prompt)
 
 Live copy of the prompt on the ElevenLabs agent `agent_4801m53xf00nfs5r1336h1yhyemj`
-(Voice: Jessica, female, `cgSgspJ2msm6clMCkdW9`. Claude Haiku 5.5, timezone Asia/Kolkata, knowledge: `knowledge.md`, auto language detection en/hi/te).
+(Voices, all female: Tripti `cVCsnHwp2N6T6knBBlSd` for English + Hindi, Madhavi `4XvBGCPMXWyVQa75dbZg` for Telugu. Claude Haiku 5.5, timezone Asia/Kolkata, knowledge: `knowledge.md`, auto language detection en/hi/te).
 Keep this file in sync when the prompt changes.
 
 ## Changelog
 - 2026-10-17: first version (English, Hindi, Telugu; FAQ + booking details; safety rules).
-- 2026-10-18: switched to a female voice (Jessica). Indian voices Tripti (en/hi) and Janaki (te) can replace it once added to the ElevenLabs workspace from the Voice Library.
+- 2026-10-18: female voices: first Jessica for all languages, then Indian voices added from the Voice Library: Tripti (English, Hindi) and Madhavi (Telugu; no "Siri" voice exists in the library).
 - 2026-10-18: **mobile number rules** added after a test call saved the wrong mobile number
   (one "zero" heard as "seven", and the caller confirmed the wrong read-back). Number is now collected in two
   halves on calls, must be exactly 10 digits starting 6–9, and is read back digit by digit in two groups of 5.
