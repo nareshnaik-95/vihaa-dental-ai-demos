@@ -42,6 +42,7 @@ Portfolio demos for @boringagent.ai. **Northwind Smile Dental is a fictional cli
 ## Decisions
 
 - **Voice provider:** _(record the Task 7 language spike result here)_
+- **Early test agent (ElevenLabs, 2026-10-17):** "Northwind Smile - AI Receptionist (test)", agent ID `agent_4801m53xf00nfs5r1336h1yhyemj`. Chat + voice, en/hi/te with auto language detection, Claude Haiku 5.5, clinic knowledge attached. Answers FAQs and collects booking details, but **nothing is saved yet** (no n8n tools). Test page: https://elevenlabs.io/app/talk-to?agent_id=agent_4801m53xf00nfs5r1336h1yhyemj. Text test in Telugu passed (correct price, hours, asked for name).
 - **SMS in India:** sending Twilio SMS to Indian numbers requires DLT registration. For the demo, send SMS to your own verified number, or use WhatsApp (Twilio sandbox / WhatsApp Cloud API) for the follow-ups instead.
 
 ## Folder layout
