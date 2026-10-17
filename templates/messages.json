@@ -1,0 +1,32 @@
+{
+  "confirmation": {
+    "en": { "subject": "Your Vihaa Dental appointment is confirmed", "body": "Hi {name}, your {service} at Vihaa Dental is confirmed for {when}. Reschedule: {link}" },
+    "hi": { "subject": "विहा डेंटल अपॉइंटमेंट कन्फर्म", "body": "नमस्ते {name}, विहा डेंटल में आपका {service} {when} को कन्फर्म है। बदलने के लिए: {link}" },
+    "te": { "subject": "విహా డెంటల్ అపాయింట్మెంట్ కన్ఫర్మ్", "body": "నమస్కారం {name}, విహా డెంటల్‌లో మీ {service} {when}కి కన్ఫర్మ్ అయింది. మార్చడానికి: {link}" }
+  },
+  "reminder": {
+    "en": { "subject": "Reminder: Vihaa Dental tomorrow", "body": "Reminder: {name}, your Vihaa Dental visit is on {when}. Need to change it? {link}" },
+    "hi": { "subject": "रिमाइंडर: विहा डेंटल", "body": "रिमाइंडर: {name}, विहा डेंटल में आपकी विज़िट {when} को है। बदलना है? {link}" },
+    "te": { "subject": "రిమైండర్: విహా డెంటల్", "body": "రిమైండర్: {name}, విహా డెంటల్‌లో మీ అపాయింట్మెంట్ {when}కి ఉంది. మార్చాలా? {link}" }
+  },
+  "noshow": {
+    "en": { "subject": "We missed you at Vihaa Dental", "body": "Hi {name}, we missed you today at Vihaa Dental. Book a new time here: {link}" },
+    "hi": { "subject": "आज हम आपसे नहीं मिल पाए", "body": "नमस्ते {name}, आज विहा डेंटल में हम आपसे नहीं मिल पाए। नया समय बुक करें: {link}" },
+    "te": { "subject": "ఈరోజు మిమ్మల్ని మిస్ అయ్యాం", "body": "నమస్కారం {name}, ఈరోజు విహా డెంటల్‌లో మిమ్మల్ని మిస్ అయ్యాం. కొత్త సమయం బుక్ చేయండి: {link}" }
+  },
+  "review": {
+    "en": { "subject": "How was your visit to Vihaa Dental?", "body": "Thank you for visiting Vihaa Dental, {name}! Could you share a quick review? It takes 30 seconds: {link}" },
+    "hi": { "subject": "विहा डेंटल में आपका अनुभव कैसा रहा?", "body": "विहा डेंटल आने के लिए धन्यवाद, {name}! क्या आप एक छोटा सा रिव्यू देंगे? सिर्फ़ 30 सेकंड: {link}" },
+    "te": { "subject": "విహా డెంటల్‌లో మీ అనుభవం ఎలా ఉంది?", "body": "విహా డెంటల్‌కి వచ్చినందుకు ధన్యవాదాలు, {name}! చిన్న రివ్యూ ఇవ్వగలరా? 30 సెకన్లు చాలు: {link}" }
+  },
+  "nudge": {
+    "en": { "subject": "Still want that appointment?", "body": "Hi {name}, still want to book your {service} at Vihaa Dental? Pick a time here: {link}" },
+    "hi": { "subject": "अपॉइंटमेंट अभी भी चाहिए?", "body": "नमस्ते {name}, क्या आप अभी भी विहा डेंटल में {service} बुक करना चाहते हैं? समय चुनें: {link}" },
+    "te": { "subject": "ఇంకా అపాయింట్మెంట్ కావాలా?", "body": "నమస్కారం {name}, విహా డెంటల్‌లో {service} ఇంకా బుక్ చేయాలనుకుంటున్నారా? సమయం ఎంచుకోండి: {link}" }
+  },
+  "textback": {
+    "en": { "subject": "Sorry we missed your call", "body": "Hi, this is Vihaa Dental. Sorry we couldn't finish your call. Book in 1 minute here: {link}" },
+    "hi": { "subject": "आपकी कॉल पूरी नहीं हो पाई", "body": "नमस्ते, यह विहा डेंटल है। माफ़ कीजिए, आपकी कॉल पूरी नहीं हो पाई। 1 मिनट में बुक करें: {link}" },
+    "te": { "subject": "మీ కాల్ పూర్తి కాలేదు", "body": "నమస్కారం, ఇది విహా డెంటల్. క్షమించండి, మీ కాల్ పూర్తి కాలేదు. 1 నిమిషంలో బుక్ చేయండి: {link}" }
+  }
+}

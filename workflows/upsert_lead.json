@@ -1,0 +1,238 @@
+{
+  "name": "upsert_lead",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "vihaa-0001",
+      "name": "When called by another workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "id": "vihaa-0002",
+      "name": "Read Leads",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        0
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// CRM row logic for the `upsert_lead` workflow. Pure functions: embedded into an n8n Code node by scripts/build.js.\n\nconst LEAD_COLUMNS = [\"lead_id\", \"created_at\", \"name\", \"phone\", \"email\", \"source\", \"language\",\n  \"service\", \"stage\", \"appointment_at\", \"calendar_event_id\", \"summary\", \"last_contact_at\", \"notes\"];\nconst STAGES = [\"New\", \"Qualified\", \"Booked\", \"Confirmed\", \"Attended\", \"No-show\", \"Review requested\"];\nconst LANGUAGES = [\"en\", \"hi\", \"te\"];\n\n// Indian numbers without a country code get +91.\nfunction normalizePhone(raw) {\n  if (!raw) return \"\";\n  const hasPlus = String(raw).trim().startsWith(\"+\");\n  let digits = String(raw).replace(/\\D/g, \"\");\n  if (!digits) return \"\";\n  if (hasPlus) return \"+\" + digits;\n  if (digits.length === 11 && digits.startsWith(\"0\")) digits = digits.slice(1);\n  if (digits.length === 10) return \"+91\" + digits;\n  if (digits.length === 12 && digits.startsWith(\"91\")) return \"+\" + digits;\n  return \"+\" + digits;\n}\n\nfunction findExisting(rows, input) {\n  const phone = normalizePhone(input.phone);\n  const email = (input.email || \"\").trim().toLowerCase();\n  if (phone) {\n    const byPhone = rows.find(r => normalizePhone(r.phone) === phone);\n    if (byPhone) return byPhone;\n  }\n  if (email) {\n    const byEmail = rows.find(r => (r.email || \"\").trim().toLowerCase() === email);\n    if (byEmail) return byEmail;\n  }\n  return null;\n}\n\nfunction buildLeadRow(input, existing, nowIso, makeId) {\n  const base = existing || {};\n  const pick = key => {\n    const v = input[key];\n    return v === undefined || v === null || v === \"\" ? (base[key] || \"\") : String(v);\n  };\n  const language = LANGUAGES.includes(pick(\"language\")) ? pick(\"language\") : \"en\";\n  const stage = STAGES.includes(pick(\"stage\")) ? pick(\"stage\") : (STAGES.includes(base.stage) ? base.stage : \"New\");\n\n  const values = {\n    lead_id: base.lead_id || \"L-\" + makeId(),\n    created_at: base.created_at || nowIso,\n    name: pick(\"name\"),\n    phone: normalizePhone(pick(\"phone\")),\n    email: pick(\"email\"),\n    source: pick(\"source\"),\n    language,\n    service: pick(\"service\"),\n    stage,\n    appointment_at: pick(\"appointment_at\"),\n    calendar_event_id: pick(\"calendar_event_id\"),\n    summary: pick(\"summary\"),\n    last_contact_at: nowIso,\n    notes: base.notes || \"\",\n  };\n  const row = {};\n  for (const col of LEAD_COLUMNS) row[col] = values[col];\n  return { row, created: !existing };\n}\n\nconst input = $('When called by another workflow').first().json;\nconst rows = $input.all().map(i => i.json).filter(r => r.lead_id);\nconst existing = findExisting(rows, input);\nconst { row } = buildLeadRow(input, existing, new Date().toISOString(),\n  () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6));\nreturn [{ json: row }];"
+      },
+      "id": "vihaa-0003",
+      "name": "Build row",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "lead_id"
+          ],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "vihaa-0004",
+      "name": "Save lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        660,
+        0
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = $('Build row').first().json;\nconst before = $('Read Leads').all().map(i => i.json).some(r => r.lead_id === row.lead_id);\nreturn [{ json: { lead_id: row.lead_id, created: !before } }];"
+      },
+      "id": "vihaa-0005",
+      "name": "Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { received_at: new Date().toISOString(), source: 'upsert_lead',\n  payload: JSON.stringify($('When called by another workflow').first().json),\n  error: String($json.error?.message || $json.error || 'Sheets write failed') } }];"
+      },
+      "id": "vihaa-0006",
+      "name": "To Inbox",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "YOUR_SHEET_ID",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Inbox",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": []
+        },
+        "options": {}
+      },
+      "id": "vihaa-0007",
+      "name": "Save to Inbox",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "Could not save lead to Leads; stored in Inbox instead"
+      },
+      "id": "vihaa-0008",
+      "name": "Raise alert",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "When called by another workflow": {
+      "main": [
+        [
+          {
+            "node": "Read Leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Leads": {
+      "main": [
+        [
+          {
+            "node": "Build row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build row": {
+      "main": [
+        [
+          {
+            "node": "Save lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save lead": {
+      "main": [
+        [
+          {
+            "node": "Result",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "To Inbox",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "To Inbox": {
+      "main": [
+        [
+          {
+            "node": "Save to Inbox",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Inbox": {
+      "main": [
+        [
+          {
+            "node": "Raise alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Kolkata"
+  },
+  "active": false
+}

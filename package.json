@@ -1,0 +1,9 @@
+{
+  "name": "vihaa-dental-ai-demos",
+  "private": true,
+  "description": "AI receptionist, CRM and follow-up automation demos for a fictional dental clinic (@boringagent.ai)",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node --test test/*.test.js"
+  }
+}
