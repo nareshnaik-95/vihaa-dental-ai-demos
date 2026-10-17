@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northwind Smile Dental — Madhapur, Hyderabad</title>
+  <meta name="description" content="Family dental clinic in Madhapur, Hyderabad. Check-ups, whitening, emergency care and clear aligners. Book 24/7 with our AI receptionist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Noto+Sans+Telugu:wght@500&family=Noto+Sans+Devanagari:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #0f766e;
+      --teal-dark: #115e59;
+      --teal-soft: #ccfbf1;
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --accent: #f59e0b;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; }
+    h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.15; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: Fraunces, serif; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+    .logo-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--teal); display: grid; place-items: center; }
+    .nav-links { display: flex; gap: 28px; font-size: .95rem; color: var(--muted); }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--teal); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: .95rem; text-decoration: none; border: 0; cursor: pointer; transition: transform .15s, background .15s; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-ghost { background: #fff; color: var(--teal); border: 1.5px solid var(--teal); }
+
+    /* Hero */
+    .hero { padding: 72px 0 64px; background: linear-gradient(180deg, #f0fdfa 0%, #fff 100%); }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .eyebrow { display: inline-block; background: var(--teal-soft); color: var(--teal-dark); font-weight: 600; font-size: .85rem; padding: 6px 12px; border-radius: 999px; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin-bottom: 18px; }
+    .hero h1 em { font-style: normal; color: var(--teal); }
+    .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin-bottom: 28px; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; }
+    .langs { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: var(--muted); font-size: .9rem; }
+    .lang-chip { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--ink); }
+    .te { font-family: "Noto Sans Telugu", sans-serif; }
+    .hi { font-family: "Noto Sans Devanagari", sans-serif; }
+
+    .hero-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 28px; box-shadow: 0 20px 50px -20px rgba(15,118,110,.25); }
+    .hero-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+    .hero-card .sub { color: var(--muted); font-size: .95rem; margin-bottom: 20px; }
+    .phone-big { display: flex; align-items: center; gap: 14px; background: var(--bg-soft); border-radius: var(--radius); padding: 16px; margin-bottom: 14px; text-decoration: none; }
+    .phone-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--teal); display: grid; place-items: center; flex-shrink: 0; }
+    .phone-big strong { display: block; font-size: 1.2rem; }
+    .phone-big span { color: var(--muted); font-size: .85rem; }
+    .live { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; font-weight: 600; color: #15803d; }
+    .live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 4px #dcfce7; }
+    .card-list { list-style: none; display: grid; gap: 10px; font-size: .95rem; margin-top: 16px; }
+    .card-list li { display: flex; gap: 10px; }
+    .card-list li::before { content: "✓"; color: var(--teal); font-weight: 700; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-head { max-width: 620px; margin-bottom: 40px; }
+    .section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 12px; }
+    .section-head p { color: var(--muted); }
+
+    .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .service { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: #fff; transition: box-shadow .2s, transform .2s; }
+    .service:hover { box-shadow: 0 12px 30px -12px rgba(15,23,42,.18); transform: translateY(-2px); }
+    .service .ico { width: 44px; height: 44px; border-radius: 12px; background: var(--teal-soft); display: grid; place-items: center; margin-bottom: 16px; font-size: 1.3rem; }
+    .service h3 { font-size: 1.15rem; margin-bottom: 8px; }
+    .service p { color: var(--muted); font-size: .92rem; margin-bottom: 14px; }
+    .price { font-weight: 600; color: var(--teal-dark); }
+
+    .soft { background: var(--bg-soft); }
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .info { background: #fff; border-radius: var(--radius); padding: 26px; border: 1px solid var(--line); }
+    .info h3 { font-size: 1.1rem; margin-bottom: 12px; }
+    .hours { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    .hours td { padding: 6px 0; border-bottom: 1px dashed var(--line); }
+    .hours td:last-child { text-align: right; font-weight: 500; }
+    .info p { color: var(--muted); font-size: .95rem; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+    .step { padding: 24px; border-radius: var(--radius); border: 1px solid var(--line); position: relative; }
+    .step::before { counter-increment: step; content: counter(step); position: absolute; top: -14px; left: 24px; width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: .85rem; }
+    .step h3 { font-size: 1.1rem; margin: 6px 0 8px; }
+    .step p { color: var(--muted); font-size: .95rem; }
+
+    .emergency { background: #fff7ed; border: 1px solid #fed7aa; border-radius: var(--radius); padding: 22px 26px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .emergency strong { font-size: 1.05rem; }
+    .emergency p { color: #9a3412; font-size: .95rem; }
+
+    footer { background: var(--ink); color: #cbd5e1; padding: 40px 0; font-size: .9rem; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .disclaimer { margin-top: 18px; font-size: .8rem; color: #64748b; }
+
+    /* Chat launcher placeholder (replaced by the n8n chat widget in Task 5) */
+    #chat-placeholder { position: fixed; right: 20px; bottom: 20px; z-index: 20; }
+    #chat-placeholder button { display: flex; align-items: center; gap: 10px; background: var(--teal); color: #fff; border: 0; border-radius: 999px; padding: 14px 20px; font: 600 .95rem Inter, sans-serif; box-shadow: 0 10px 30px -8px rgba(15,118,110,.6); cursor: pointer; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .info-grid, .steps { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 16px; }
+      .services { grid-template-columns: 1fr; }
+      .hero { padding: 48px 0; }
+      section { padding: 56px 0; }
+      .nav .btn { padding: 10px 14px; font-size: .85rem; }
+      #chat-placeholder button span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.6-4-2.3-6-1.2C3.5 5.6 3.6 9 4.5 12c.8 2.6 1.2 6.5 2.8 7.5 1.6 1 2-3.5 3-5.5.6-1.2 2.8-1.2 3.4 0 1 2 1.4 6.5 3 5.5 1.6-1 2-4.9 2.8-7.5.9-3 1-6.4-1.5-7.7-2-1.1-4.5-.4-6 1.2z"/></svg>
+      </span>
+      Northwind Smile
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#visit">Visit us</a>
+      <a href="#how">How booking works</a>
+    </nav>
+    <a href="#book" class="btn btn-primary">Book now</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="book">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Madhapur, Hyderabad · Since 2018</span>
+        <h1>Healthy smiles,<br><em>booked in under a minute.</em></h1>
+        <p class="lead">Gentle family dentistry with three experienced dentists. Chat or call any time, day or night. Our AI receptionist answers your questions and books your slot instantly.</p>
+        <div class="cta-row">
+          <a href="#" class="btn btn-primary" id="cta-chat">💬 Chat & book</a>
+          <a href="tel:+910000000000" class="btn btn-ghost" data-phone-link>📞 Call our AI receptionist</a>
+        </div>
+        <div class="langs">
+          We speak:
+          <span class="lang-chip">English</span>
+          <span class="lang-chip hi">हिंदी</span>
+          <span class="lang-chip te">తెలుగు</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Call our AI receptionist">
+        <span class="live">Answering now, 24/7</span>
+        <h3 style="margin-top:10px">Talk to our AI receptionist</h3>
+        <p class="sub">Book, reschedule or ask anything. In English, Hindi or Telugu.</p>
+        <a href="tel:+910000000000" class="phone-big" data-phone-link>
+          <span class="phone-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          </span>
+          <span>
+            <strong data-phone-text>+91 00000 00000</strong>
+            <span>Tap to call · avg. booking time 40 sec</span>
+          </span>
+        </a>
+        <ul class="card-list">
+          <li>Same-day appointments when available</li>
+          <li>Instant SMS confirmation and reminder</li>
+          <li>Free rescheduling up to 2 hours before</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Care for the whole family</h2>
+        <p>Clear prices, no surprises. Your dentist confirms the final plan after your check-up.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="ico" aria-hidden="true">🦷</div>
+          <h3>Check-up & cleaning</h3>
+          <p>Full exam, scaling and polish. Recommended every 6 months.</p>
+          <span class="price">₹800 · 30 min</span>
+        </article>
+        <article class="service">
+          <div class="ico" aria-hidden="true">✨</div>
+          <h3>Teeth whitening</h3>
+          <p>In-clinic whitening that lasts 1–2 years. EMI available.</p>
+          <span class="price">from ₹6,000</span>
+        </article>
+        <article class="service">
+          <div class="ico" aria-hidden="true">🚑</div>
+          <h3>Emergency visit</h3>
+          <p>Pain, swelling or a broken tooth? We keep slots free every day.</p>
+          <span class="price">₹1,000 · 30 min</span>
+        </article>
+        <article class="service">
+          <div class="ico" aria-hidden="true">😁</div>
+          <h3>Clear aligners</h3>
+          <p>Invisalign consultation with a 3D scan of your smile.</p>
+          <span class="price">Free consultation</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft" id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Visit us</h2>
+        <p>Free parking in the building basement. Please arrive 10 minutes early for your first visit.</p>
+      </div>
+      <div class="info-grid">
+        <div class="info">
+          <h3>Opening hours</h3>
+          <table class="hours">
+            <tr><td>Monday – Saturday</td><td>9:00 AM – 6:00 PM</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+            <tr><td>Last appointment</td><td>5:30 PM</td></tr>
+          </table>
+        </div>
+        <div class="info">
+          <h3>Address</h3>
+          <p>2nd Floor, Plot 14<br>Madhapur Main Road<br>Hyderabad 500081</p>
+        </div>
+        <div class="info">
+          <h3>Payment & insurance</h3>
+          <p>UPI, cards and cash. Cashless insurance from major providers. Bring your insurance card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Booking takes less than a minute</h2>
+        <p>No hold music, no waiting for opening hours.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Chat or call</h3>
+          <p>Tell our AI receptionist what you need, in English, Hindi or Telugu.</p>
+        </div>
+        <div class="step">
+          <h3>Pick a slot</h3>
+          <p>It checks the live calendar and offers the next free times.</p>
+        </div>
+        <div class="step">
+          <h3>Get confirmed</h3>
+          <p>You get an instant confirmation and a reminder the day before.</p>
+        </div>
+      </div>
+      <div class="emergency" style="margin-top:40px">
+        <div>
+          <strong>In pain right now?</strong>
+          <p>Call us for the earliest emergency slot. For a medical emergency, go to the nearest hospital or dial 108.</p>
+        </div>
+        <a href="tel:+910000000000" class="btn btn-primary" data-phone-link>📞 Call now</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><strong style="color:#fff">Northwind Smile Dental</strong><br>Madhapur, Hyderabad</div>
+      <div>Mon–Sat 9:00 AM – 6:00 PM</div>
+    </div>
+    <p class="disclaimer">Northwind Smile Dental is a fictional clinic created to demonstrate AI automation by @boringagent.ai. No real appointments or medical services.</p>
+  </div>
+</footer>
+
+<!-- Task 5 replaces this placeholder with the n8n chat widget -->
+<div id="chat-placeholder">
+  <button type="button" aria-label="Chat with Northwind Smile">💬 <span>Chat & book</span></button>
+</div>
+
+<script>
+  // Set the real AI receptionist number here in Task 7 (E.164, e.g. "+914012345678").
+  const PHONE_E164 = "+910000000000";
+  const PHONE_DISPLAY = "+91 00000 00000";
+  document.querySelectorAll("[data-phone-link]").forEach(a => a.href = "tel:" + PHONE_E164);
+  document.querySelectorAll("[data-phone-text]").forEach(el => el.textContent = PHONE_DISPLAY);
+
+  // Until the chat widget exists (Task 5), the chat buttons scroll to the booking card.
+  const openChat = e => { e.preventDefault(); document.getElementById("book").scrollIntoView(); };
+  document.getElementById("cta-chat").addEventListener("click", openChat);
+  document.querySelector("#chat-placeholder button").addEventListener("click", openChat);
+</script>
+</body>
+</html>
